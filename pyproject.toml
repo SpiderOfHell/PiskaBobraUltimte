@@ -1,7 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "timed-quiz"
+version = "1.0.0"
+description = "Викторина с таймером для практической работы № 3"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=8.0", "behave>=1.2.6"]
+
+[project.scripts]
+timed-quiz = "quiz_app:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+py-modules = ["quiz_manager", "quiz_app"]
+
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
-addopts = "--strict-markers"
+addopts = "-ra --strict-markers"
 markers = [
-    "bdd: тесты поведения BDD"
+    "atdd: acceptance tests",
+    "sdd: example-based specification tests",
 ]
